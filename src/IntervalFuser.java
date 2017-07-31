@@ -14,10 +14,6 @@ public class IntervalFuser {
 	private String endLimit = "2345-01-01 00:00:00.000000"; //default value.
 	private Integer idLimit = 0; //default value.
 	
-	private String intervalStart = startLimit;
-	private String intervalEnd = null;
-	private boolean initialIteration = true;
-	private boolean newInterval = true;
 	private Connection conn;
 	private PreparedStatement prepStatement;
 	private ResultSet rs;
@@ -31,6 +27,10 @@ public class IntervalFuser {
 	public IntervalFuser() {}
 	
 	public void fuseIntervals() {
+		String intervalStart = startLimit;
+		String intervalEnd = null;
+		boolean initialIteration = true;
+		boolean newInterval = true;
 		do {
 			if (newInterval) {
 				//1: Get the largest interval from starting date.
